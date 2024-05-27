@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
 project(cuda-app)
 
-set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};../libtorch/share/cmake/Torch/")
+set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};../libtorch/share/cmake/")
 find_package(Torch REQUIRED)
+find_package(ATen REQUIRED)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.cpp src/*.cu)

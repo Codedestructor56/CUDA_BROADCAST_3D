@@ -1,7 +1,9 @@
 #include <iostream>
 #include <torch/torch.h>
 #include "cuda-kernel.h"
+#include "cuda-app.h"
 #include <vector>
+
 
 #define CHECK_CUDA(x) TORCH_CHECK(x.device().is_cuda(), #x " must be a CUDA tensor")
 #define CHECK_CONTIGUOUS(x) TORCH_CHECK(x.is_contiguous(), #x " must be contiguous")
@@ -20,12 +22,12 @@
         } \
     } while(0)
 
-def broadcast_matrix(torch::Tensor a, torch::Tensor b){
+torch::Tensor broadcast_matrix(torch::Tensor a, torch::Tensor b){
   CHECK_INPUT(a);
   CHECK_INPUT(b);
-  CHECK_BROADCASTABLE(a,b);
   std::vector<int64_t> s1 = a.sizes().vec();
   std::vector<int64_t> s2 = b.sizes().vec();
+  CHECK_BROADCASTABLE(s1, s2);
   bool s1_is_larger = false;
   bool s2_is_larger = false;
   for (size_t i = 0; i < s1.size(); ++i) {
