@@ -61,3 +61,23 @@ torch::Tensor broadcast_matrix(torch::Tensor a, torch::Tensor b){
 
     return output;
 }
+
+
+int main(){
+   torch::Device device(torch::kCPU);
+    if (torch::cuda::is_available()) {
+        std::cout << "CUDA is available! Creating tensor on GPU." << std::endl;
+        device = torch::Device(torch::kCUDA);
+    } else {
+        std::cout << "CUDA is not available. Creating tensor on CPU." << std::endl;
+    }
+
+    torch::Tensor a = torch::rand({3, 4, 4}, torch::TensorOptions().device(device));
+    torch::Tensor b = torch::rand({3, 1, 4}, torch::TensorOptions().device(device));
+
+    torch::Tensor output = broadcast_matrix(a,b);
+    std::cout << "Tensor: " << output << std::endl;
+    std::cout << "Device: " << output.device() << std::endl;
+    return 0;
+
+}

@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <cuda_runtime.h>
-#include <torch/torch.h>
 
 #ifdef __cplusplus
 extern "C" {
