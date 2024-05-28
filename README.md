@@ -51,7 +51,8 @@ __global__ void broadcast_kernel_3d(float* a, float * b, float * out, int s1_0, 
 
     o = a_value + b_value;
     out[i * s1_1 * s1_2 + j * s1_2 + k] = o;
-}```
+}
+```
 
 
 ## Main Application
