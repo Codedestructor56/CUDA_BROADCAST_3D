@@ -10,7 +10,7 @@ __global__ void broadcast_kernel_3d(float* a, float * b, float * out, int s1_0, 
     int j = blockIdx.y * blockDim.y + threadIdx.y;
     int k = blockIdx.x * blockDim.x + threadIdx.x;
 
-    if (i >= s1_0 || j >= s1_1 || k >= s1_2) {
+    if (i > s1_0 || j > s1_1 || k > s1_2) {
         return;
     }
 

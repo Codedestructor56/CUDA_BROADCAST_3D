@@ -1,6 +1,5 @@
 CMakeCache.txt
 CMakeFiles/
-Makefile
 cmake_install.cmake
 detect_cuda_compute_capabilities.cu
 detect_cuda_version.cc
