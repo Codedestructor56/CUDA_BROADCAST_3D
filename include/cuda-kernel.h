@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-torch::Tensor broadcast_cuda(torch::Tensor a, torch::Tensor b);
+void launch_broadcast_kernel_3d(float* a, float* b, float* out, const std::vector<int>& s1, const std::vector<int>& s2, const std::vector<int>& broadcast_shape); 
 
 #ifdef __cplusplus
 }

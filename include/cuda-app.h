@@ -2,7 +2,7 @@
 #define CUDA_APP_H
 #include <torch/torch.h>
 
-torch::Tensor broadcast_sum(torch::Tensor a, torch::Tensor b);
+torch::Tensor broadcast_matrix(torch::Tensor a, torch::Tensor b);
 
 
 #endif
