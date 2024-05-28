@@ -81,7 +81,8 @@ torch::Tensor broadcast_matrix(torch::Tensor a, torch::Tensor b) {
     }
 
     return output;
-}```
+}
+```
 
 
 
@@ -98,17 +99,19 @@ This line sets the minimum required version of CMake to 3.18. If a version lower
 This line sets up the project named "cuda-app" with C++ and CUDA languages enabled.
 
 ```file(GLOB_RECURSE CPP_FILES CONFIGURE_DEPENDS src/*.cpp)
-file(GLOB_RECURSE CUDA_FILES CONFIGURE_DEPENDS src/*.cu)```
+file(GLOB_RECURSE CUDA_FILES CONFIGURE_DEPENDS src/*.cu)
+```
 These lines use the file command to search recursively for all .cpp and .cu files in the src directory and its subdirectories and store them in the variables CPP_FILES and CUDA_FILES, respectively.
 
 
-````set(CMAKE_CUDA_HOST_COMPILER ${CMAKE_CXX_COMPILER})````
+```set(CMAKE_CUDA_HOST_COMPILER ${CMAKE_CXX_COMPILER})```
 Here, the host compiler for CUDA code is set to the C++ compiler.
 
 ```set_target_properties(cuda-app PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
     CUDA_ARCHITECTURES "75" 
-)```
+)
+```
 This sets properties for the "cuda-app" target, enabling separable compilation for CUDA code and specifying the compute architecture to be targeted as "75"(you should set it to your own cuda sm arch).
 
 
@@ -118,7 +121,8 @@ This sets properties for the "cuda-app" target, enabling separable compilation f
  - Create a build directory:
 
 ```mkdir build
-cd build```
+cd build
+```
 
 
  - Run CMake to configure the project:
